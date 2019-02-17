@@ -1,6 +1,7 @@
 <template>
   <div>
     <form id="searchForm">
+      <h4>Apartment Search</h4>
       <label for="zipcode">Zipcode</label>
         <input :class='{error: errors.zip}' type="text" name="zipcode" id='zip' v-model='formData.zip'></input>
         <small v-if='errors.zip'>{{errors.zip}}></small>
@@ -43,7 +44,6 @@
      
       validate(values, submitEvent){
         submitEvent.preventDefault();
-        debugger
         
         let hasErrors = false;
         
@@ -111,7 +111,13 @@
   #searchForm {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
+    border: .5px solid black;
+    padding: 2.5em;
+    width: 65%;
+    height: 15em;
+    margin: auto;
   }
 
   .error {
@@ -119,7 +125,22 @@
   }
 
   button {
-    width: 10%;
+    width: 75%;
+    align-self: center;
+    border-radius: 2em;
+    height: 3.5em;
+    background-color: rgba(10,10,10,.5);
+    color: white;
+  }
+
+  form > input {
+    width: 100%;
+    height: 4em;
+  }
+
+  h4{
+    margin-top: .25em;
+    margin-bottom: .25em;
   }
   
 </style>

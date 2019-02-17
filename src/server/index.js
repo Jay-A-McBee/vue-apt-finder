@@ -130,7 +130,7 @@ app.get('/fetch', function(req,res){
   client
   .search(options)
   .then((listings) => {
-    console.log('filtering listings', listings[0]);
+    console.log('filtering listings', [listings[0], listings.length]);
     allListings = listings
       .filter( listing => {
         let price = Number(listing.price.replace(/\$/,''));
@@ -139,7 +139,7 @@ app.get('/fetch', function(req,res){
         return price <= 2200 && price >= 1500;
       })
 
-    // console.log('listings post filter', listings)
+    console.log('listings post filter', allListings)
     // play with listings here...
     // Promise.all(listings.map((listing) => client.details(listing)));
     // return Promise.all(listings.map( listing => client.details(listing)));
@@ -156,7 +156,6 @@ app.get('/fetch', function(req,res){
     return Promise.all(allListings.slice(cut,end).map( listing => client.details(listing)));
   })
   .then(detailsArr => {
-    console.log('detailsArr', detailsArr);
     return res.send(
       detailsArr
         .sort(sortByMostRecent)

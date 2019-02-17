@@ -51,12 +51,9 @@ export default new Vuex.Store({
 
       const uriArr = Object.keys(formVals).reduce((acc,key) => [...acc,`${key}=${formVals[key]}`], []);
 
-      debugger
-
       return callAPI(`more?${uriArr.join('&')}`)
         .then( resp => {
           var x = resp;
-          debugger
           context.commit('success', JSON.parse(resp));
         })
         .catch( err => context.commit('failure', err))

@@ -1,8 +1,5 @@
 <template>
   <div>
-    <button type='button' @click='request'>
-      Click me
-    </button>
     <div v-if='isFetching'>Loading...</div>
     <div v-if='!isFetching && !listings.length'>That's it, sucka!!</div>
     <div v-for='item in listings' class='itemContainer column'>
@@ -29,7 +26,6 @@
         <img class = 'thumbnail' v-for='img in item.images.slice(1,6)' :src='img'/>
       </div>
     </div>
-    <button type='button' @click="more">More</button>
   </div>
 </template>
 

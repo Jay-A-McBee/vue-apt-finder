@@ -3,7 +3,6 @@
 import fetch from 'isomorphic-fetch';
 
 const config = {
-  credentials: true,
   method: 'GET',
   headers: {
     'Accept': 'application/json',
@@ -14,7 +13,6 @@ const config = {
 const BASE_URL = 'http://localhost:3000/';
 
 export const callAPI = (endpoint) => {
-
   // config.method = method;
       
   return fetch(BASE_URL + endpoint, config)
